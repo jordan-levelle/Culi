@@ -1,0 +1,47 @@
+<h1 class="px-5 py-5 my-5 text-center">Contact Culi</h1>
+
+<!--Alert Success Message-->
+<% if(contactSubObj != '') { %>
+    <div class="alert alert-success" role="alert">
+        <%= contactSubObj %>
+    </div>
+<% } %>
+
+<!--Alert Fail Message-->
+<% if(contactErrObj != '') { %>
+<div class="alert alert-danger" role="alert">
+    <%= contactErrObj %>
+</div>
+<% } %>
+
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form action="/contact" enctype="multipart/form-data" method="POST">
+            <div class="row g-3">
+                <div class="col-12">
+                    <label for="firstname" class="label">Firstname: </label>
+                    <input type="text" placeholder="Firstname..." name="firstname" class="form-control"><br>
+                </div>
+                
+                <div class="col-12">
+                    <label for="lastname" class="label">Lastname: </label>
+                <input type="text" placeholder="lastname..." name="lastname" class="form-control"><br>
+                </div>
+                
+                <div class="col-12">
+                    <label for="email" class="label">Email: </label>
+                    <input type="email" placeholder="Enter Email..." name="email" class="form-control"><br>
+                </div>
+
+                <div class="col-12">
+                    <label for="message" class="label">Whats the message?</label>
+                    <textarea name="message" id="message" class="form-control" cols="35" rows="15"></textarea>
+                </div>
+                
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

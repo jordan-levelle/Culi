@@ -1,0 +1,13 @@
+<h1 class="pb-3">Random</h1>
+
+<div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+    <% if(recipe != '') {%>
+
+            <a href="/recipe/<%=recipe.id %>" class="col text-center meal_link">
+                <div class="card">
+                  <img src="/uploads/<%=recipe.image %>" alt="<%-recipe.title %>" loading="lazy">
+                </div>
+                <div><%-recipe.title %></div>
+            </a>
+       <% } %>
+</div>

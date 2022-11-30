@@ -1,0 +1,36 @@
+<h4 class="pb-4">Culi Inspiration</h4>
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/">Home</a></li>
+      <li class="breadcrumb-item"><a href="/Category">Category</a></li>
+      <li class="breadcrumb-item" aria-current="page">Current</li>
+    </ol>
+  </nav>
+
+<!-- Breadcrumb contributed by Boostrap:https://getbootstrap.com/docs/4.0/components/breadcrumb/-->
+<div class="row row-cols-2 row-cols-lg-6 g-2 g-lg-3 py-4">
+    <% if(typeof category !== 'undefined' && category.length > 0){ %>
+        <% category.forEach(function(categories, index){ %>
+            <a href="/Category/<%- category.name %>" class="col text-center meal_link">
+                <div class="card">
+                    <img src="media/<%- categories.image %>" alt="<%- categories.title %>" loading="lazy">
+                </div>
+            <div><%- categories.title %></div>
+            </a>
+        <% }) %>
+    <% } %>
+</div>
+
+<div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+    <% if(typeof Id !== 'undefined' && Id.length > 0){ %>
+        <% Id.forEach(function(recipe, index) { %>
+            <a href="/recipe/<%=recipe.id %>" class="col text-center meal_link">
+                <div class="card">
+                  <img src="/uploads/<%=recipe.image %>" alt="<%-recipe.title %>" loading="lazy">
+                </div>
+                <div><%-recipe.title %></div>
+            </a>
+        <% }) %>
+    <% } %>
+</div>

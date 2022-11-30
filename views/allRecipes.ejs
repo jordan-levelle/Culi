@@ -1,0 +1,18 @@
+<h4>All Recipes</h4>
+
+<% if(recipe != null ) { %>
+
+<div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+    <% if(typeof allRecipes !== 'undefined' && allRecipes.length > 0){ %>
+        <% allRecipes.forEach(function(recipe, index) { %>
+            <a href="/recipe/<%=recipe.id %>" class="col text-center meal_link">
+                <div class="card">
+                  <img src="/uploads/<%=recipe.image %>" alt="<%-recipe.title %>" loading="lazy">
+                </div>
+                <div><%-recipe.title %></div>
+            </a>
+        <% }) %>
+    <% } %>
+</div>
+
+
