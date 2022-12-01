@@ -15,7 +15,7 @@
 <!--Alert Fail Message-->
 <% if(infoErrObj != '') { %>
 <div class="alert alert-danger" role="alert">
-    <%= infoErrObj %>
+    <%= infoErrObj[0].message %>
 </div>
 <% } %>
 
@@ -26,7 +26,7 @@
             <div class="row g-3">
                 <div class="col-12">
                     <label for="title" class="label">Title of Recipe</label>
-                    <input type="text" name="recipe_Title" id="recipe_Title" class="form-control">
+                    <input type="text" name="title" id="title" class="form-control">
                 </div>
 
                 <div class="col-12">
@@ -52,16 +52,16 @@
                     <select class="form-select form-control" name="category" aria-label="Category">
                     <option selected>Select Culi Category</option>
                     <option value="Breakfast">Breakfast</option>
-                    <option value="Breakfast">Lunch</option>
-                    <option value="Breakfast">Dinner</option>
-                    <option value="Breakfast">Dessert</option>
-                    <option value="Breakfast">Everything in Between</option>
+                    <option value="Lunch">Lunch</option>
+                    <option value="Dinner">Dinner</option>
+                    <option value="Dessert">Dessert</option>
+                    <option value="Everything in Between">Everything in Between</option>
                     </select>
                 </div>
 
                 <div class="col-12">
                     <label for="image">Image</label>
-                    <input type="file" class="form-control" name="image" accept="/image">
+                    <input type="file" class="form-control" name="image" accept="image/*">
                 </div>
             
                 <div class="col-12">

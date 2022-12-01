@@ -1,6 +1,11 @@
-<h4>All Recipes</h4>
 
-<% if(recipe != null ) { %>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/">Home</a></li>
+      <li class="breadcrumb-item"><a href="/allRecipes">All Recipes</a></li>
+    </ol>
+  </nav>
+
 
 <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
     <% if(typeof allRecipes !== 'undefined' && allRecipes.length > 0){ %>
@@ -13,6 +18,8 @@
             </a>
         <% }) %>
     <% } %>
+
 </div>
+
 
 

@@ -8,3 +8,4 @@ db.once('open', function(){
 
 require('./categories');
 require('./Recipe');
+require('./contact');

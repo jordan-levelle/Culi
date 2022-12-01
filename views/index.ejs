@@ -1,5 +1,5 @@
 <!--Top Div-->
-<div class="row flex-lg-row align-items-center g-5 py-4 mb-3">
+<div class="row flex-lg-row align-items-center g-5 py-4 mb-20">
     <!--Title and Introduction-->
     <div class = "col-12 col-lg-9">
         <h1 class = "display-5 fw-bold mb-2">Explore the World of Culi Recipes</h1>
@@ -13,20 +13,24 @@
             </div>
         </div>
     </div>
+</div>
+
+
+
 
 <!--Explore-->
-    <div class="p-3 bg-light text-black">
+    <div class="row p-3 bg-light text-black">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
             <h3>Explore</h3>
         </div>
     </div>
             
-    <div class="row row-cols-2 row-cols-lg-6 g-2 g-lg-3 py-4">
-        <% if(category != ''){ %>
+    <div class="row row-cols-2 row-cols-lg-6 g-2 g-lg-3 py-4 align-items-center justify-content-center">
+        <% if(typeof category !== 'undefined' && category.length > 0){ %>
             <% category.forEach(function(categories, index){ %>
-                <a href="/Category/ <%- category.name %>" class="col text-center meal_link">
+                <a href="/Category/<%- categories.title %>" class="col text-center meal_link">
                     <div class="card">
-                        <img src="/media/<%- categories.image %>" alt="<%- categories.title %>" loading="lazy">
+                        <img src="media/<%- categories.image %>" alt="<%- categories.title %>" loading="lazy">
                     </div>
                 <div><%- categories.title %></div>
                 </a>
@@ -34,14 +38,17 @@
         <% } %>
     </div>
 
+
+
+
 <!--Latest Inspiration-->
-    <div class="p-3 bg-light text-black">
+    <div class="row p-3 bg-light text-black">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
             <h3>Latest</h3>
         </div>
     </div>
 
-    <div class="row flex-row-cols-2 row-cols-lg-6 g-2 g-lg-3 py-4 middle_div1">
+    <div class="row flex-row-cols-2 row-cols-lg-6 g-2 g-lg-3 py-4 middle_div1 align-items-center justify-content-center">
         <% if(meals.newest != '') { %>
             <% meals.newest.forEach(function(recipe, index){ %>
                 <a href="/recipe/<%=recipe.id %>" class="col text-center meal_link">
@@ -55,14 +62,14 @@
     </div>
 
 <!--Breakfast-->
-<div class="p-3 bg-light text-black">
+<div class="row p-3 bg-light text-black">
     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
         <h3>Breakfast</h3>
-        <a href="/Category/Breakfast" class="m1-10">View More</a>
+        <a href="/Category/Breakfast" class="col">View More</a>
     </div>
 </div>
 
-<div class="row flex-row-cols-2 row-cols-lg-6 g-2 g-lg-3 py-4 middle_div1">
+<div class="row flex-row-cols-2 row-cols-lg-6 g-2 g-lg-3 py-4 align-items-center justify-content-center middle_div1">
     <% if(meals.Breakfast != '') { %>
         <% meals.Breakfast.forEach(function(recipe, index){ %>
             <a href="/recipe/<%=recipe.id %>" class="col text-center meal_link">
@@ -76,14 +83,14 @@
 </div>
 
 <!-- Lunch Inspiration-->
-<div class="p-3 bg-light text-black">
+<div class="row p-3 bg-light text-black">
     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
         <h3>Lunch</h3>
         <a href="/Category/Lunch" class="m1-10">View More</a>
     </div>
 </div>
 
-<div class="row flex-row-cols-2 row-cols-lg-6 g-2 g-lg-3 py-4 middle_div1">
+<div class="row flex-row-cols-2 row-cols-lg-6 g-2 g-lg-3 py-4 align-items-center justify-content-center middle_div1">
     <% if(meals.Lunch != '') { %>
         <% meals.Lunch.forEach(function(recipe, index){ %>
             <a href="/recipe/<%=recipe.id %>" class="col text-center meal_link">
@@ -97,13 +104,13 @@
 </div>
 
 <!--Dinner-->
-<div class="p-3 bg-light text-black">
+<div class="row p-3 bg-light text-black">
     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
         <h3>Dinner</h3>
         <a href="/Category/Dinner" class="m1-10">View More</a>
     </div>
 </div>
-<div class="row flex-row-cols-2 row-cols-lg-6 g-2 g-lg-3 py-4 middle_div1">
+<div class="row flex-row-cols-2 row-cols-lg-6 g-2 g-lg-3 py-4 align-items-center justify-content-center middle_div1">
     <% if(meals.Dinner != '') { %>
         <% meals.Dinner.forEach(function(recipe, index){ %>
             <a href="/recipe/<%=recipe.id %>" class="col text-center meal_link">
@@ -117,14 +124,14 @@
 </div>
 
 <!--Dessert-->
-<div class="p-3 bg-light text-black">
+<div class="row p-3 bg-light text-black">
     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
         <h3>Dessert</h3>
         <a href="/Category/Dessert" class="m1-10">View More</a>
     </div>
 </div>
 
-<div class="row flex-row-cols-2 row-cols-lg-6 g-2 g-lg-3 py-4 middle_div1">
+<div class="row flex-row-cols-2 row-cols-lg-6 g-2 g-lg-3 py-4 align-items-center justify-content-center middle_div1">
     <% if(meals.Dessert != '') { %>
         <% meals.Dessert.forEach(function(recipe, index){ %>
             <a href="/recipe/<%=recipe.id %>" class="col text-center meal_link">
@@ -138,13 +145,13 @@
 </div>
 
 <!-- Everything in Between Inspiration-->
-<div class="p-3 bg-light text-black">
+<div class="row p-3 bg-light text-black">
     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
         <h3>Everything in Between</h3>
         <a href="/Category/Everything" class="m1-10">View More</a>
     </div>
 </div>
-<div class="row flex-row-cols-2 row-cols-lg-6 g-2 g-lg-3 py-4 middle_div1">
+<div class="row flex-row-cols-2 row-cols-lg-6 g-2 g-lg-3 py-4 align-items-center justify-content-center middle_div1">
     <% if(meals.Everything != '') { %>
         <% meals.Everything.forEach(function(recipe, index){ %>
             <a href="/recipe/<%=recipe.id %>" class="col text-center meal_link">

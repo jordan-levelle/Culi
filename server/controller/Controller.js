@@ -44,8 +44,8 @@ exports.getCategoriesById = async(req, res) => {
     try {
         let categoryId = req.params.id;
         const limit = 25;
-        const Id = await Recipe.find({'category': categoryId}).limit(limit);
-        res.render('Category', {title: 'Culi Categories', Id});    
+        const catById = await Recipe.find({'category': categoryId}).limit(limit);
+        res.render('Category', {title: 'Culi Categories', catById});    
     } catch (error) {
         res.status(500).send({message: error.message || "Error"});
     }
@@ -100,8 +100,8 @@ exports.deleteRecipe = async (req, res) => {
 */ 
 exports.getCreate_recipe = async(req, res) => {
     try {
-        const infoErrObj = req.flash('Errors');
-        const infoSubObj = req.flash('Submit');
+        const infoErrObj = req.flash('infoErrors');
+        const infoSubObj = req.flash('infoSubmit');
         res.render('create', {title: 'Create Culi Recipe', infoErrObj, infoSubObj}); 
     } catch (error) {
         res.status(500).send({message: error.message || "Error"});
@@ -115,22 +115,40 @@ exports.getCreate_recipe = async(req, res) => {
 exports.postCreate_recipe = async(req, res) => {
     try {
 
-        const addedRecipe = new Recipe({
-            name: "Cookies",
-            description: "Cookies",
-            ingredients: "Cookies",
-            category: "Dessert",
-            image: "lunch.jpg"
-        });
-
-        await addedRecipe.save();
+        let imageUploadFile;
+        let uploadPath;
+        let newImageName;
     
-        req.flash('Submit', 'Culi Recipe Successfully Added');
-        res.redirect('/create'); 
-    } catch (error) {
-        req.flash('Submit', error);
+        if(!req.files || Object.keys(req.files).length === 0){
+          console.log('No Files where uploaded.');
+        } else {
+    
+          imageUploadFile = req.files.image;
+          newImageName = Date.now() + imageUploadFile.name;
+    
+          uploadPath = require('path').resolve('./') + '/public/uploads/' + newImageName;
+    
+          imageUploadFile.mv(uploadPath, function(err){
+            if(err) return res.satus(500).send(err);
+          })
+        }
+    
+        const newRecipe = new Recipe({
+          title: req.body.title,
+          description: req.body.description,
+          ingredients: req.body.ingredients,
+          category: req.body.category,
+          image: newImageName
+        });
+        
+        await newRecipe.save();
+    
+        req.flash('infoSubmit', 'Recipe has been added.')
         res.redirect('/create');
-    }    
+      } catch (error) {
+        req.flash('infoErrors', error);
+        res.redirect('/create');
+      }
 }
 
 
@@ -151,7 +169,7 @@ exports.getAbout_Culi = async(req, res) => {
 */ 
 exports.getContact_Culi = async(req, res) => {
     try {
-        const contactErrObj = req.flash('Errors');
+        const contactErrObj = req.flash('contactErrors');
         const contactSubObj = req.flash('contactSubmit');
         res.render('contact', {title: 'Contact Culi', contactErrObj, contactSubObj}); 
     } catch (error) {
@@ -166,10 +184,10 @@ exports.getContact_Culi = async(req, res) => {
 exports.postContact_Culi = async(req, res) => {
     try {
         const addContact = new Contact({
-            firstname : "test",
-            lastname : "test",
-            message : "test",
-            email : "1234@gmail.com"
+            firstname : req.body.firstname,
+            lastname : req.body.lastname,
+            message : req.body.message,
+            email : req.body.email
         });
 
         await addContact.save();
@@ -177,7 +195,7 @@ exports.postContact_Culi = async(req, res) => {
         req.flash('contactSubmit', 'Your message has been sent!');
         res.redirect('/contact'); 
     } catch (error) {
-        req.flash('contactSubmit', error);
+        req.flash('contactErrors', error);
         res.redirect('/contact');
     }   
 }
