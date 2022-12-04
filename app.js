@@ -19,7 +19,7 @@ const fileUpload = require('express-fileupload');
 var methodOverride = require('method-override')
 
 const app = express();
-const port = ('https://culi-culi.herokuapp.com/');
+const port = process.env.PORT || 3000;
 
 
 /*/ 
@@ -38,7 +38,6 @@ app.use(session({
     secret: 'recipe_project_secure',
     saveUninitialized: true,
     resave: true,
-    httpOnly: true
 }));
 
 app.use(flash());
