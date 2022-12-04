@@ -7,7 +7,6 @@ console.log(process.env)
 const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
 
-const cors = require('cors');
 
 /*/
 / Require fileUpload, Session, CookieParser, Flash
@@ -18,10 +17,6 @@ const flash = require('connect-flash');
 const fileUpload = require('express-fileupload');
 
 var methodOverride = require('method-override')
-
-var corsOptions = {
-    origin: "http://localhost:3000"
-};
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -35,7 +30,7 @@ app.use(express.static('public'));
 app.use(expressLayouts);
 app.use(methodOverride('_method'))
 
-app.use(cors(corsOptions));
+
 app.use(express.json());
 
 app.use(cookieParser('recipe_project_secure'));

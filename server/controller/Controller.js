@@ -4,6 +4,7 @@ const Recipe = require('../model/Recipe');
 const Contact = require('../model/contact')
 
 
+
 /* 
 / GET: Home Page
 */ 
@@ -291,7 +292,7 @@ async function insertDummyRecipeData(){
                     "1 cup shredded cheddar cheese",
                 ],
                 "category": "Breakfast",
-                "image": "capecodpaella.jpg"
+                "image": "easyeggtacos.jpg"
             },
             {
                 "title": "Bacon Breakfast Pizza",
@@ -306,7 +307,7 @@ async function insertDummyRecipeData(){
                     "1 cup shredded cheddar cheese",
                 ],
                 "category": "Breakfast",
-                "image": "capecodpaella.jpg"
+                "image": "chickpeas.jpg"
             },
             {
                 "title": "Mixed Berry French Toast Bake",
@@ -324,8 +325,8 @@ async function insertDummyRecipeData(){
                     "1/3 cup packed brown sugar",
                     "Optional: Confectioners' sugar and maple syrup",
                 ],
-                "category": "Breakfast",
-                "image": "capecodpaella.jpg"
+                "category": "Lunch",
+                "image": "coconutyogurtcake.jpg"
             },
             {
                 "title": "Sour Cream Donuts",
@@ -351,7 +352,7 @@ async function insertDummyRecipeData(){
                     "¼ teaspoon vanilla extract",
                 ],
                 "category": "Dessert",
-                "image": "capecodpaella.jpg"
+                "image": "bananabakedoatmeal.jpg"
             },
 
 
