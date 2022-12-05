@@ -30,7 +30,7 @@ router.post('/search', Controller.search_for_recipe);
 
 //* Get:Delete Recipe
 router.get('/allRecipes', Controller.allRecipes);
-router.post('/recipe', Controller.deleteRecipe);
+router.post('/recipe/:id', Controller.deleteRecipe);
 
 
 module.exports = router;

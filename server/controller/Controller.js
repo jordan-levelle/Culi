@@ -87,8 +87,8 @@ exports.getRecipe = async(req, res) => {
 */
 exports.deleteRecipe = async (req, res) => {
     try {
-        let recipeId = req.params.id;
-        await Recipe.deleteOne(recipeId)
+        let recipeId = req.params.Id;
+        await Recipe.deleteOne(recipeId);
         res.render('allRecipes');
     } catch (error) {
         res.status(500).send({message: error.message || "Error"});
